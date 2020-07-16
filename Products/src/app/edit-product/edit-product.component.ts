@@ -27,11 +27,16 @@ export class EditProductComponent implements OnInit {
       console.log(this.id)
     })
   this.productService.editproduct(this.id).subscribe(res=>{
-    console.log(res);
+    //console.log(res);
+
+
     //this.product=JSON.parse(JSON.stringify(res));
     //var productsdata=JSON.parse(res);
     this.productItem=JSON.parse(JSON.stringify(res));
-    console.log(this.productItem);
+    console.log("placed");
+    //console.log(this.productItem);
+
+
     //var productsdata=JSON.parse(JSON.stringify(res));
     //console.log(this.product);
     //console.log(productsdata);
@@ -46,11 +51,13 @@ export class EditProductComponent implements OnInit {
 //      alert("updated");
 //      location.reload();  
 //  }
- updatedata(id,item){
-   this.productService.updateProduct(id,item);
-   alert("success");
+ updatedata(){
+   console.log(this.productItem);
+   console.log(this.id);
+   this.productService.updateProduct(this.id,this.productItem);
+   //alert("success");
    this.router.navigate(['/']);
-  //  location.reload();
+   //window.location.reload();
+   
  }
-
 }

@@ -33,10 +33,11 @@ export class ProductService {
     
   
   updateProduct(id,item){
-    console.log(id);
-    console.log(item);
-    return this.http.put<any>("http://localhost:3000/edit"+`/${id}`,item).subscribe(res=>{
-      console.log(res)
+    console.log("inside");
+    // console.log(id);
+    // console.log(item);
+    return this.http.put<any>("http://localhost:3000/update"+`/${id}`,item).subscribe((res)=>{
+    console.log(res)
     })
   }
 }

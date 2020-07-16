@@ -50,11 +50,21 @@ app.get('/products',function(req,res){
     });
    
 app.put('/update/:id',(req,res)=>{
+    console.log("entered update");
     res.header("Access-Control-Allow-Origin","*")
     res.header("Access-Control-Allow-Methods:GET, POST, PATCH, PUT, DELETE, OPTION")
     const id=req.params.id;
+    console.log(id +"id in update");
     console.log(req.body);
     item={
+                // productId : req.body.product.productId,
+                // productName :  req.body.product.productName,
+                // productCode :  req.body.product.productCode,
+                // releaseDate : req.body.product.releaseDate, 
+                // description : req.body.product.description,
+                // price :  req.body.product.price,
+                // starRating :  req.body.product.starRating,
+                // imageUrl :  req.body.product.imageUrl
         productId : req.body.productId,
         productName :  req.body.productName,
         productCode :  req.body.productCode,
@@ -65,14 +75,15 @@ app.put('/update/:id',(req,res)=>{
         imageUrl :  req.body.imageUrl
     }
     //var product = new ProductData(item);
-
-    if(item.productId!=null){
-        ProductData.findByIdAndUpdate({_id:id},{"$set":{productId:item.productId}})
+    console.log(item);
+    //if(item.productId!=null){
+        //ProductData.findByIdAndUpdate({_id:id},{"$set":{productId:item.productId}})
+        ProductData.findByIdAndUpdate(id,item)
         .then((product)=>{
             product.save();
-            alert("Updated successfully");
+            console.log("Updated successfully");
         })
-        }
+        //}
     
     })
 

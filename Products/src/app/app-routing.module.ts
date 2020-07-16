@@ -13,6 +13,7 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
   {path:'edit/:id',component:EditProductComponent},
+  {path:'update/:id',component:EditProductComponent}
 
 ];
 
